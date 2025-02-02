@@ -1,6 +1,8 @@
 from django.db import models
 from ckeditor.fields import RichTextField
 from googletrans import Translator
+from django.core.cache import cache
+
 
 
 class FAQ(models.Model):
@@ -45,8 +47,15 @@ class FAQ(models.Model):
     def get_translation(self, lang='en'):
         """
         Returns the translated question for the given language.
-        Falls back to dynamic translation if pre-saved translation is not available.
+        Uses Redis caching to improve performance.
         """
+        cache_key = f"faq_translation_{self.id}_{lang}"  # Unique cache key
+        cached_translation = cache.get(cache_key)
+
+        if cached_translation:
+            return cached_translation  # Return cached version
+
+        # If not cached, translate dynamically
         translations = {
             'hi': self.question_hi,
             'bn': self.question_bn,
@@ -57,20 +66,11 @@ class FAQ(models.Model):
             'kn': self.question_kn,
         }
 
-        # Return pre-saved translation if available
-        if lang in translations and translations[lang]:
-            return translations[lang]
+        translation = translations.get(lang, self.question) or self.question
 
-        # Fallback to dynamic translation
-        if lang != 'en':  # No need to translate if the language is English
-            translator = Translator()
-            try:
-                return translator.translate(self.question, src='en', dest=lang).text
-            except Exception as e:
-                print(f"Dynamic translation failed: {e}")
+        # Store in cache for future requests (expires in 24 hours)
+        cache.set(cache_key, translation, timeout=86400)
 
-        # Default to the original English question
-        return self.question
-
+        return translation
     def __str__(self):
         return self.question[:50]  # Show the first 50 characters of the question
