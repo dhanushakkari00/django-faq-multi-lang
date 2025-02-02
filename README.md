@@ -48,29 +48,21 @@ All dependencies are listed in `requirements.txt`. Install them using:
 pip install -r requirements.txt
 ```
 
-### 4. Configure Environment Variables
-Create a `.env` file in the project root and add the required environment variables:
 
-```ini
-DJANGO_SECRET_KEY=your_secret_key_here
-REDIS_URL=redis://127.0.0.1:6379/1
-```
-
-### 5. Apply Database Migrations
+### 4. Apply Database Migrations
 Run the following command to set up the database:
 
 ```bash
 python manage.py migrate
 ```
 
-### 6. Create a Superuser (Optional)
+### 5. Create a Superuser (Optional)
 If you want access to the Django Admin panel, create a superuser account:
 
 ```bash
 python manage.py createsuperuser
 ```
 
-Follow the prompts to set up a username and password.
 
 ### 7. Start the Django Development Server
 Run the following command to start the server:
@@ -129,10 +121,10 @@ Supported languages:
 The Django Admin panel provides a user-friendly interface for managing FAQs.
 
 - **URL:** `http://127.0.0.1:8000/admin/`
-- **Superuser credentials** (if created):
+- **Superuser credentials** :
   ```
-  Username: admin
-  Password: admin123
+  Username: dhanushakkari
+  Password: bharathfd
   ```
 
 To access the panel, create a superuser if you haven't already:
@@ -185,59 +177,7 @@ faq_project/
 
 ---
 
-## Contributing
 
-Contributions are welcome. Follow the steps below to contribute:
-
-1. **Fork the repository** on GitHub.
-2. **Clone your forked repository**:
-   ```bash
-   git clone https://github.com/YOUR_GITHUB_USERNAME/faq_project.git
-   ```
-3. **Create a new feature branch**:
-   ```bash
-   git checkout -b feature-new-update
-   ```
-4. **Make your changes and commit them**:
-   ```bash
-   git add .
-   git commit -m "feat: Added new FAQ feature"
-   ```
-5. **Push changes to GitHub**:
-   ```bash
-   git push origin feature-new-update
-   ```
-6. **Create a pull request** on GitHub.
-
----
-
-## Version Control and Commit Guidelines
-
-Follow the **conventional commit message format** for clarity:
-
-| Type     | Description |
-|----------|------------|
-| `feat:`  | A new feature |
-| `fix:`   | A bug fix |
-| `docs:`  | Documentation updates |
-| `test:`  | Adding or updating tests |
-| `chore:` | Maintenance tasks |
-
-Examples:
-
-```bash
-git commit -m "feat: Add API support for multiple languages"
-git commit -m "fix: Resolve translation caching issue"
-git commit -m "docs: Update README with API examples"
-```
-
----
-
-## License
-
-This project is licensed under the **MIT License**. You are free to modify and distribute it as needed.
-
----
 
 ## Acknowledgements
 
