@@ -11,6 +11,17 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+STATIC_URL = '/static/'
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Define STATIC_ROOT even if you have no static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Remove STATICFILES_DIRS if you don’t have static files
+
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
