@@ -20,7 +20,7 @@ This is a Django-based FAQ management web application that supports **WYSIWYG ed
 To set up the project locally, first, clone the repository:
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/faq_project.git
+git clone https://github.com/dhanushakkari00/faq_project.git
 cd faq_project
 ```
 
