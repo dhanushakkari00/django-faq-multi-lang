@@ -93,16 +93,7 @@ GET /api/faqs/?lang=<language_code>
 curl "http://127.0.0.1:8000/api/faqs/?lang=hi"
 ```
 
-#### Example Response
-```json
-[
-    {
-        "id": 1,
-        "question": "What is Django?",
-        "answer": "<p>Django is a web framework.</p>"
-    }
-]
-```
+
 
 Supported languages:
 - `hi` - Hindi
@@ -146,13 +137,7 @@ To run the test suite:
 pytest
 ```
 
-To run tests while ignoring warnings:
 
-```bash
-pytest --disable-warnings
-```
-
----
 
 ## Project Structure
 
